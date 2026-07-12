@@ -11,11 +11,16 @@ class Course:
     def add_assessment(self, assessment):
         self.assessments.append(assessment)
     def find_assessment(self, title):
+        if title is None:
+            return None
         for a in self.assessments:
-            if a.title.lower() == title.lower():
+            if str(a.title).lower() == str(title).lower():
                 return a
         return None
 
+    def remove_student(self, student_id):
+        if student_id in self.students:
+            self.students.remove(student_id)
 
     def display_info(self):
         print(f"course_code: {self.course_code}")
@@ -24,10 +29,11 @@ class Course:
         print(f"Assessments: ")
         if not self.assessments:
             print("No Assessments")
-            for a in self.assessments:
-                a.display_info()
+        for a in self.assessments:
+            print('_', a)
+            a.display_info()
 
 
-new_course = Course(course_code="py001", course_name="Python", students=["S001", "S002"], assessments=["quiz1"])
-new_course.display_info()
+
+
 
