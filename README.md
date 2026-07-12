@@ -84,13 +84,21 @@ Converts numeric average percentage to letter grades:
 #### Implements in get_letter_grade() method. Displayed in student reports.
 
 ## Feature2. Dashboard
-#### Display total data storred in course
+#### Display total data stored in course
 - Display total number of students in system 
 - Display total number of courses in system
 - Display total  number of assessments
 - Display total number of grade records
 
+## Project Demo
+Watch the project demo here:
 
+- Part 1: Run program
+- (https://youtu.be/W79EGmpG5yk?si=Iy7SFsZMso4EPgBg)
+- Part 2: Two Creative feature
+- (https://youtu.be/7ByODk4ezHc?si=-oT8opN9xtpDzzfO)
+- Part3: About program
+- (https://youtu.be/ZI7oNB88qWI?si=pdUDmOhinRSPwUzM)
 
 
 
