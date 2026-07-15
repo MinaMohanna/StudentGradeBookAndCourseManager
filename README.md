@@ -5,7 +5,7 @@
 Student Grade book And Course Manager System
 
 ## Details about project
-This app is a comprehensive sytem for managing students, course , assessments , and grades.
+This app is a comprehensive system for managing students, course , assessments , and grades.
 Users interact with the system through an interactive menu to perform various management tasks.
 
 ### Student Operations:
@@ -93,8 +93,7 @@ Converts numeric average percentage to letter grades:
 ## Project Demo
 Watch the project demo here:
 
-
-- Part 0: Introduction 
+- Part 0: Introduction
 - (https://youtu.be/02RKCccR7B0?si=jdwC1ILkVTaf-ta7)
 - Part 1: Run program
 - (https://youtu.be/W79EGmpG5yk?si=Iy7SFsZMso4EPgBg)
