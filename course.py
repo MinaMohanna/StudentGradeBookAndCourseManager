@@ -1,15 +1,29 @@
+# Course class course attributes
+
 class Course:
     def __init__(self, course_code, course_name, students=None, assessments= None):
         self.course_code = course_code
         self.course_name = course_name
-        self.students = students if students else []
-        self.assessments = assessments if assessments else []
+        if students is None:
+            self.students = []
+        else:
+            self.students = students
 
+        if assessments is None:
+            self.assessments = []
+        else:
+            self.assessments = assessments
+
+    # add student to course
     def add_student(self, student_id):
         if student_id not in self.students:
             self.students.append(student_id)
+
+    # add assessment for course
     def add_assessment(self, assessment):
         self.assessments.append(assessment)
+
+    # Finds assessment to add student in this
     def find_assessment(self, title):
         if title is None:
             return None
@@ -18,9 +32,11 @@ class Course:
                 return a
         return None
 
+    # remove student from the course when we delete student from app records
     def remove_student(self, student_id):
         if student_id in self.students:
             self.students.remove(student_id)
+
 
     def display_info(self):
         print(f"course_code: {self.course_code}")
