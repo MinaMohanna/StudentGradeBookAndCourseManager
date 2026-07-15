@@ -239,7 +239,7 @@ class Gradebook:
         print(f"Total Assessments: {total_assessments}")
         print(f"Total grades Records: {total_records}")
 
-    # Creative feature that uodates student information (name, email, student id)
+    # Creative feature that updates student information (name, email, student id)
     def update_student(self, student_id, name, email):
         if student_id not in self.students:
             print("Error: Student not found")
