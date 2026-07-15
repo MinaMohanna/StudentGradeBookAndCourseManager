@@ -89,13 +89,22 @@ class Gradebook:
         if score < 0 or score > assessment.max_score:
             print(f"Error: Score must be between 0 and {assessment.max_score}")
             return
+        # add student in grade
+        if student_id not in self.grades:
+            self.grades[student_id] = {}
 
-        self.grades.setdefault(student_id,{}).setdefault(course_code,{})
+        # Add course code  in grades
+        if course_code not in self.grades[student_id]:
+            self.grades[student_id][course_code] = {}
+
+            # add grade record to grade attribute
         self.grades[student_id][course_code][assessment.title] = score
+
 
         print(f" Recorded {score}/ {assessment.max_score} for {assessment_title}")
         print(f"Feedback: {assessment.grade_message(score)}")
 
+    # calculate  average score for student's assessment in course
     def calculate_average(self, student_id, course_code):
         if student_id not in self.grades:
             return 0
@@ -103,6 +112,7 @@ class Gradebook:
         course_grades = self.grades[student_id][course_code]
         course =self.courses[course_code]
 
+        # Storing student percentage in assessments
         percentage =[]
         for title, score in course_grades.items():
             assessment = course.find_assessment(title)
@@ -114,6 +124,7 @@ class Gradebook:
 
         return round(sum(percentage)/len(percentage),2)
 
+    # Show students information and  courses
     def show_report(self, student_id):
         if student_id not in self.students:
             print("Error: Student not found")
@@ -132,7 +143,7 @@ class Gradebook:
 
             print(f" \nCourse: {course_code} - {course.course_name}")
             course_grades = self.grades.get(student_id,{}).get(course_code)
-
+            # avoid error and display this message if user did not recorded anything yet
             if not course_grades:
                 print("No grades recorded yet")
                 continue
@@ -148,10 +159,11 @@ class Gradebook:
             print(f"Result: {self.get_result(avg)}")
         print("=" * 27)
 
+    # Show the result that if student passed exam or not
     def get_result(self, average):
         return "Passed" if average >= self.passing_grade else "Failed"
 
-
+    # search student with name or id
     def search_student(self, keyword):
         keyword = keyword.lower()
         results = []
@@ -160,9 +172,13 @@ class Gradebook:
             if keyword in student.get_id().lower() or keyword in student.get_name().lower():
                 results.append(student)
 
+
         return results
 
+    # Delete all student information
     def delete_student(self, student_id):
+
+        # Avoid error and display this message
         if student_id not in self.students:
             print("Error: Student not found")
             return
@@ -180,7 +196,7 @@ class Gradebook:
         del self.students[student_id]
         print(f"Student '{student.get_name()}' deleted")
 
-
+     # Display all students that we added to app
     def view_students(self):
         if not self.students:
             print("No students yet")
@@ -192,7 +208,7 @@ class Gradebook:
             print("_" * 30)
 
 
-
+    # Creative feature That shows students grade with alphabet
     def get_letter_grade(self, average):
         if average >= 90:
             return "A"
@@ -206,7 +222,7 @@ class Gradebook:
             return "F"
 
 
-
+    # Creative feature which show all records that we added to app (student, courses,assessment, total records)
     def show_dashboard(self):
         total_students = len(self.students)
         total_courses = len(self.courses)
@@ -223,7 +239,7 @@ class Gradebook:
         print(f"Total Assessments: {total_assessments}")
         print(f"Total grades Records: {total_records}")
 
-
+    # Creative feature that uodates student information (name, email, student id)
     def update_student(self, student_id, name, email):
         if student_id not in self.students:
             print("Error: Student not found")
