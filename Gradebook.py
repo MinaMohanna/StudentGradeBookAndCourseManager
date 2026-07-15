@@ -2,14 +2,14 @@ from student import Student
 from course import Course
 from Assessment import Quiz, Exam, Project, Assessment
 
-
+# GradeBook class connect all classes together and contain all logic
 class Gradebook:
     def __init__(self,  passing_grade):
         self.students = {}
         self.courses = {}
         self.grades = {}
         self.passing_grade = passing_grade
-
+    # Add student method stores students information and add it to gradebook
     def add_student(self, student):
         if student.get_id() not in self.students:
             self.students[student.get_id()] = student
@@ -17,6 +17,7 @@ class Gradebook:
         else:
             print("Student already added")
 
+    # Adding Course by getting course Name and  Course ID from user
     def add_course(self, course):
         if course.course_code not in self.courses:
             self.courses[course.course_code] = course
@@ -24,48 +25,67 @@ class Gradebook:
         else:
             print("Course already added")
 
+    # Enrolling student by using Student id and student name
     def enroll_student(self, student_id, course_code):
+
+        # Display a message to user if student_id does not exist  and avoiding from error for user
         if student_id not in self.students:
             print("Error: Student not found")
             return
 
+        # Display a message to user if course_code  does not exist  and avoiding from error for user
         if course_code not in self.courses:
             print("Error: Course not found")
             return
 
-
+        # If there was not a problem for enrolling student then user can enroll student
         student = self.students[student_id]
         course = self.courses[course_code]
         student.enroll_course(course_code)
         course.add_student(student_id)
         print(f"{student.get_name()} enrolled in course {course_code}")
 
+    # Add assessment in gradebook by getting course code and assessment name
     def add_assessment(self, course_code, assessment):
+
+        # Display a message for user that course code is not true and avoid error for user
         if course_code not in self.courses:
             print("Error: Course not found")
             return
+
         course = self.courses[course_code]
         course.add_assessment(assessment)
         print(f" assessment {assessment.title} added to course {course.course_name}. ")
 
+    # Records grade for assessment that user interred for student by getting student id , course code , assessment title and score from user
     def record_grade(self, student_id, course_code, assessment_title, score):
+        # display message for user and avoiding from error
         if student_id not in self.students:
             print("Error: Student not found")
             return
+
+        # display message for user and avoiding from error
         if course_code not in self.courses:
             print("Error: Course not found")
             return
 
+        # if course code was added to course before  adds record
         course = self.courses[course_code]
+
+        # if course code was not  added to course before  do not add the record and display message for user
         if student_id not in course.students:
             print("Error: Student with this ID not found in this course")
             return
 
+        # if assessment   was added to course before  adds record
         assessment = course.find_assessment(assessment_title)
+
+        # if assessment  was not  added to assessment before  do not add the record and display message for user
         if assessment is None:
             print("Error: Assessment not found")
             return
 
+        # Avoid error if user enter a negative number or bigger then max score:
         if score < 0 or score > assessment.max_score:
             print(f"Error: Score must be between 0 and {assessment.max_score}")
             return
