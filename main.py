@@ -6,6 +6,7 @@ from Assessment import Quiz, Exam, Project
 
 gb = Gradebook(passing_grade=55)
 
+# Interactive menu for user
 while True:
     print("\n===== Gradebook Manager =====")
     print("1. Add Student ")
@@ -101,6 +102,7 @@ while True:
         else:
             print("Invalid option, try again.")
 
+    # For unexpected Errors during app execution
     except Exception as e:
         print(f"Something went wrong: {e}")
 

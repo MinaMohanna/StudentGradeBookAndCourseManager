@@ -1,3 +1,4 @@
+# Add assessment to course
 class Assessment:
     def __init__(self, title, max_score):
         self.title = title
@@ -17,8 +18,10 @@ class Assessment:
     def display_info(self):
         print(f"{self.title} _ Max Score: {self.max_score}%")
 
+# Assessments  of course
 class Quiz(Assessment):
     def __init__(self, title, max_score):
+        # Method override on display grade message
         super().__init__(title, max_score)
     def grade_message(self, score):
         if score >= 80:
@@ -27,6 +30,8 @@ class Quiz(Assessment):
             return 'Good quiz result'
         else:
             return 'You failed, try again please'
+
+        # Using method override on display information  method
     def display_info(self):
         print(f"Quiz: {self.title} _ Max Score: {self.max_score}%")
 
@@ -35,9 +40,13 @@ class Quiz(Assessment):
 
 class Exam (Assessment):
     def __init__(self, title, max_score):
+
+        # Method override on Display information
         super().__init__(title, max_score)
     def display_info(self):
         print(f"Exam: {self.title} _ Max Score: {self.max_score}%")
+
+        # Using method override on grade message method
     def grade_message(self, score):
         if score >= 80:
             return 'Great Exam result'
@@ -49,11 +58,14 @@ class Exam (Assessment):
 
 class Project(Assessment):
     def __init__(self, title, max_score):
+
+        # Method override on display information from Assessment's display method
         super().__init__(title, max_score)
 
     def display_info(self):
         print(f"Project: {self.title} _ Max Score: {self.max_score}%")
 
+        # Method override on grade message from Assessment's grade message method
     def grade_message(self, score):
         if score >= 90:
             return 'Great Project result'

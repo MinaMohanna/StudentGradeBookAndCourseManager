@@ -37,7 +37,7 @@ class Course:
         if student_id in self.students:
             self.students.remove(student_id)
 
-
+    # Display all course Info( Course code, course name, students , assessments )
     def display_info(self):
         print(f"course_code: {self.course_code}")
         print(f"course_name: {self.course_name}")
