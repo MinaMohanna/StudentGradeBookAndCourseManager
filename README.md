@@ -90,18 +90,6 @@ Converts numeric average percentage to letter grades:
 - Display total  number of assessments
 - Display total number of grade records
 
-## Project Demo
-Watch the project demo here:
-
-- Part 0: Introduction
-- (https://youtu.be/02RKCccR7B0?si=jdwC1ILkVTaf-ta7)
-- Part 1: Run program
-- (https://youtu.be/W79EGmpG5yk?si=Iy7SFsZMso4EPgBg)
-- Part 2: Two Creative feature
-- (https://youtu.be/7ByODk4ezHc?si=-oT8opN9xtpDzzfO)
-- Part3: About program
-- (https://youtu.be/ZI7oNB88qWI?si=pdUDmOhinRSPwUzM)
-
 
 
 
